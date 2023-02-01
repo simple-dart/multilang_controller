@@ -20,6 +20,7 @@ class MultilangController {
   String _localSettingsLang = '';
   String _defaultLang = '';
   String _langKeyPrefix = '';
+  String _windowTitleLangKey = '';
 
   late List<String> _langList;
 
@@ -36,11 +37,13 @@ class MultilangController {
     String localSettingsName = 'lang',
     String defaultLang = EN,
     String langKeyPrefix = '^',
+    String windowTitleLangKey = '',
   }) {
     _langList = languages;
     _localSettingsLang = localSettingsName;
     _defaultLang = defaultLang;
     _langKeyPrefix = langKeyPrefix;
+    _windowTitleLangKey = windowTitleLangKey;
     loadDefaultLangCodes();
     loadSettings();
   }
@@ -65,6 +68,9 @@ class MultilangController {
       return;
     }
     _lang = language;
+    if (_windowTitleLangKey.isNotEmpty) {
+      document.title = translate(_windowTitleLangKey);
+    }
     window.localStorage[_localSettingsLang] = language;
     _onLangChange.sink.add(language);
   }

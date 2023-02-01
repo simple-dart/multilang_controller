@@ -1,6 +1,6 @@
 name: simple_dart_multilang_controller
 description: Multilang support for Simple Dart UI framework
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/simple-dart/multilang_controller
 platforms:
   web:
